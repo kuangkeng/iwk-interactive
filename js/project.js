@@ -2,15 +2,16 @@ $(document).ready(function() {
 
     var width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
     var height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
-    var chart1a, chart1b, chart2, chart3a, chart3b; 
-    var guessX, guessY;
+    var chart1a, chart1b, chart2, chart3a, chart3b, chart4; 
+    var guessX, guessY, yourState, payAnswer, payExtra;
+    var userInputs = [];
     var answered1, answered2;
     var clicked2, clicked3, clicked4, clicked5;
-    var chart1Loaded, chart3Loaded;
+    var chart1Loaded, chart3Loaded, chart4Loaded;
     var form1clicked, form2clicked, form3clicked;
 
     var answers1 = [
-        "You’re a genius! You’ve got the exact answer. are you cheating? Only <span id='compareUser1'>0</span>% people before you got it right.",
+        "You’re a genius! You’ve got the exact answer. Are you cheating? Only <span id='compareUser1'>0</span>% people before you have got it right.",
         "Bingo! Your guess is very close to the answer. It is more accurate than <span id='compareUser1'>0</span>% of those who have played this quiz.",
         "You’ve underestimated how much water Malaysians waste! <span id='compareUser1'>0</span>% of those who have played this quiz did better than you.",
         "Malaysians are more prudent than you thought! <span id='compareUser1'>0</span>% of those who have played this quiz did better than you.",
@@ -63,6 +64,31 @@ $(document).ready(function() {
         {name:"Kuala Lumpur,<br>Malaysia", y:0.08, color:"#4188bc"},
         {name:"Hanoi,<br>Vietnam", y:0.03},
     ];
+
+    var dataSubsidy1 = [
+        {year:"2003",y:75},
+        {year:"2004",y:51},
+        {year:"2005",y:0},
+        {year:"2006",y:0},
+        {year:"2007",y:0},
+        {year:"2008",y:0},
+        {year:"2009",y:0},
+        {year:"2010",y:0},
+        {year:"2011",y:0},
+        {year:"2012",y:0},
+        {year:"2013",y:0},
+        {year:"2014",y:0},
+        {year:"2015",y:0},
+        {year:"2016",y:0},
+        {year:"2017",y:0, color:"#4188bc"},
+        {year:"2018",y:0, color:"#4188bc"},
+        {year:"2019",y:0, color:"#4188bc"},
+        {year:"2020",y:0, color:"#4188bc"},
+    ];
+    var dataSubsidyCat = [];
+    for (var i = 0; i < dataSubsidy1.length; i++){
+        dataSubsidyCat.push(dataSubsidy1[i].year);
+    }
 
     function getAnswer1(d) {
         return d == 201 ? answers1[0] :
@@ -300,7 +326,7 @@ $(document).ready(function() {
     
     $(".btnState").click(function(){
         if (clicked2 == 1){}else{
-            var yourState = $(this).html(); 
+            yourState = $(this).html(); 
             var dataStateWaterCat = [];
             for (var i = 0; i < dataStateWater.length; i++){
                 dataStateWaterCat.push(dataStateWater[i].name);
@@ -316,7 +342,7 @@ $(document).ready(function() {
 
     $(".btnPay").click(function(){
         if (clicked3 == 1){}else{
-            var payAnswer = $(this).text();
+            payAnswer = $(this).text();
             console.log("payAnswer = " + payAnswer);
             if(payAnswer == "Yes"){
                 $(".payExtra").fadeTo(500, 1);
@@ -332,7 +358,7 @@ $(document).ready(function() {
 
     $(".btnExtra").click(function(){
         if (clicked4 == 1){} else {
-            var payExtra = $(this).text();
+            payExtra = $(this).text();
             console.log("payExtra = " + payExtra);
             clicked4 = 1;
             $(".moreQuestions").fadeTo(500, 1);
@@ -353,7 +379,6 @@ $(document).ready(function() {
 
     $("#last-btn").click(function(){
         if (clicked5 == 1){} else {
-            var userInputs = [];
             var formInputs;
             for(a = 0; a < document.forms.length; a++) {
                 formInputs = document.forms[a];
@@ -368,23 +393,9 @@ $(document).ready(function() {
             clicked5 = 1;
             $('.last-btn').prop('disabled',true);
             $(".thankYou").fadeTo(500, 1);
+            sendData()
         }        
     })  
-
-
-    
-
-    function myFunction() {
-        var coffee = document.forms[0];
-        var txt = "";
-        var i;
-        for (i = 0; i < coffee.length; i++) {
-          if (coffee[i].checked) {
-            txt = txt + coffee[i].value + " ";
-          }
-        }
-        document.getElementById("order").value = "You ordered a coffee with: " + txt;
-      }
 
     $("#chart-1-text-1").waypoint(function(direction) {
         if (direction === "down") {
@@ -409,6 +420,91 @@ $(document).ready(function() {
             $("#box-below-chart-2, #box-above-chart-2").fadeTo(500, 1, makeChart3a());
             chart3Loaded = 1;
         } else { }
+    }, {
+        offset: "40%"
+    });
+
+    var labelstyle ={
+        enabled: true,
+        allowOverlap: true,
+        format: 'Year {point.year}<br>RM{point.y}mil',
+        y: -10,
+        borderRadius: 5,
+        borderWidth: 0.5,
+        borderColor: '#585858',
+        backgroundColor: 'rgba(256, 256, 256, 0.9)',
+        shape: 'callout',
+        style:{
+            fontSize: '14px',
+            fontWeight: 'normal',
+        },
+    };
+
+    $("#chart-4-text-2").waypoint(function(direction) {
+        if (direction === "down") {
+            $("#box-below-chart-3, #box-above-chart-3").fadeTo(500, 1, makeChart4());
+            chart4Loaded = 1;
+            chart4.get("seriesSubsidy").points[1].update({dataLabels: labelstyle});              
+        } else { }
+    }, {
+        offset: "80%"
+    });
+
+
+
+    $("#chart-4-text-3").waypoint(function(direction) {
+        if (direction === "down") {
+            chart4.get("seriesSubsidy").points[1].update({dataLabels: {enabled: false}});
+            chart4.get("seriesSubsidy").points[2].update({y:138});
+            chart4.get("seriesSubsidy").points[3].update({y:150});
+            chart4.get("seriesSubsidy").points[4].update({y:200,dataLabels: labelstyle});
+            chart4.get("seriesSubsidy").points[5].update({y:150});
+            chart4.get("seriesSubsidy").points[6].update({y:150,dataLabels: labelstyle});
+        } else {
+
+        }
+    }, {
+        offset: "80%"
+    });
+
+    $("#chart-4-text-5").waypoint(function(direction) {
+        if (direction === "down") {
+            chart4.get("seriesSubsidy").points[4].update({dataLabels: {enabled: false}});
+            chart4.get("seriesSubsidy").points[6].update({dataLabels: {enabled: false}});
+            chart4.get("seriesSubsidy").points[7].update({y:150});
+            chart4.get("seriesSubsidy").points[8].update({y:150});
+            chart4.get("seriesSubsidy").points[9].update({y:225});
+            chart4.get("seriesSubsidy").points[10].update({y:200});
+            chart4.get("seriesSubsidy").points[11].update({y:200});
+            chart4.get("seriesSubsidy").points[12].update({y:200});
+            chart4.get("seriesSubsidy").points[13].update({y:200,dataLabels: labelstyle});
+        } else {
+
+        }
+    }, {
+        offset: "80%"
+    });
+
+    $("#chart-4-text-6").waypoint(function(direction) {
+        if (direction === "down") {
+            chart4.get("seriesSubsidy").points[13].update({dataLabels: {enabled: false}});
+            chart4.get("seriesSubsidy").points[14].update({y:160});
+            chart4.get("seriesSubsidy").points[15].update({y:140});
+            chart4.get("seriesSubsidy").points[16].update({y:150});
+            chart4.get("seriesSubsidy").points[17].update({y:110,dataLabels: labelstyle});
+        } else {
+
+        }
+    }, {
+        offset: "80%"
+    });
+
+    $("#chart-4-text-7").waypoint(function(direction) {
+        if (direction === "down") {
+            
+        } else {
+
+        }
     }, {
         offset: "40%"
     });
@@ -693,4 +789,65 @@ $(document).ready(function() {
         });
     }
 
+    function makeChart4() {
+        if (chart4Loaded == 1){} else {
+            chart4 = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chart-container-4',
+                    type: 'column',
+                    marginLeft: 60
+                },
+                title: {text: null},
+                subtitle: {enabled: false},
+                xAxis: {categories: dataSubsidyCat},  
+                yAxis: {
+                    title: {text: 'million RM'},
+                    endOnTick: false,
+                    max: 250,
+                },
+                credits: {enabled: false},
+                legend: {enabled: false},
+                tooltip: {
+                    headerFormat: 'Year {point.key}<br>',
+                    pointFormat: '<b>RM{point.y} mil</b>',
+                },
+                plotOptions: {
+                    series:{
+                        groupPadding: 0.05,
+                        pointPadding: 0,
+                        stickyTracking: false,
+                        dataLabels: {
+                            enabled: false,
+                            style: {fontSize: '11px', textOutline: null},
+                            format: '{point.y}',
+                        }
+                    },
+                },    
+                series: [{
+                    name:"seriesSubsidy", 
+                    id:"seriesSubsidy", 
+                    color:"#FF7F00", 
+                    data: dataSubsidy1
+                }],
+            });
+        }    
+    }    
+
+    function sendData() {
+        $.ajax({
+            type: 'POST',
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSc_swFKZ9KH7YmDgKH1mOhHdBKjSXWopWCchKqzSizG38kpnA/formResponse',
+            data: { 
+            "entry.357644269":guessX,
+            "entry.1379904423":yourState,
+            "entry.132543271":guessY,
+            "entry.970216743":payAnswer,
+            "entry.1696631998":payExtra,
+            "entry.1587083114":userInputs[0],
+            "entry.714099920":userInputs[1],
+            "entry.340349913":userInputs[2],
+            "entry.1516523261":document.referrer,
+            }
+        }); 
+    }
 });     
