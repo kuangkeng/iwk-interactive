@@ -35,7 +35,7 @@
 			h1{color:#4591db}
 			h2{font-size:30px;font-weight:400;line-height:1.2em;text-align:center}
             h3{font-weight:700; font-size:60px;}
-            p{color:#B3E5FC;}
+            p{}
 			hr.uk-divider-small{margin:30px auto;border:none;border-top:8px solid #4591db;width:60px}
 			.uk-navbar-nav a{font-size:16px!important;}
 			.uk-navbar-nav .uk-active a{font-weight:700}
@@ -56,16 +56,21 @@
             #chart-container-2{height: 550px;}
             #chart-container-3b{height: 450px;}
             #chart-container-4 {height: 350px;}
-            .highlight-num {color: #4188BC;}
+            .highlight-num {color: #03A9F4;}
             .guess-value {color: #00C853;}
            
-            #chart-1-text-1{background-image:linear-gradient(rgba(4,58,102,1),rgba(4,58,102,1),rgba(4,58,102,0)); padding:20px; color:white; height: 500px; display: flex; flex-direction: column; align-items: center; margin-bottom:1700px !important; margin-top:-1250px !important; justify-content: center;}
+            #chart-1-text-1{background-image:linear-gradient(rgba(4,58,102,1),rgba(4,58,102,1),rgba(4,58,102,0)); padding:30px; color:white; height: 700px;   margin-bottom:1700px !important; margin-top:-1250px !important; margin-right: -20px;margin-left: -20px;}
             #chart-1-text-1 h3{font-size:40px;color:white; margin-bottom: 0px;}
             #chart-1-text-1 p{margin-top: 0px;}
             .chart-1-answer{background-color: #00C853; padding:15px 35px; color:white; display: inline-block; border-radius:5px;margin:30px;}
 
-            #chart-2-text-1 {margin-bottom:1700px !important; margin-top:-800px !important;}
-            #chart-3-text-1 {margin-bottom:1700px !important; margin-top:-400px !important;}
+            .section-2-header{margin-top:-900px;}
+            .section-cost-header{margin-top:-1050px;}
+
+
+
+            #chart-2-text-1 {background-image:linear-gradient(rgba(227,249,252,1),rgba(227,249,252,1),rgba(227,249,252,0)); padding:30px; color:white; height: 700px;  margin-bottom:1700px !important; margin-top:-1560px !important; justify-content: center; margin-right: -20px;margin-left: -20px;}
+            #chart-3-text-1 {background-image:linear-gradient(rgba(83,118,144,1),rgba(83,118,144,1),rgba(83,118,144,0)); padding:30px; color:white; height: 900px; margin-bottom:1700px !important; margin-top:-1500px !important; justify-content: center; margin-right: -20px;margin-left: -20px;}
             .button-box div {margin-bottom: 10px;}
             
 
@@ -73,10 +78,18 @@
             .main-title-big{font-size:2.5em; display: block; line-height: 0.8em;}
             .header-paragraph{max-width:650px;margin:60px auto 0px auto;color:white; text-align:center; }
             .sticky-container{position: sticky; display: block; top:100px; width:100%;}
+            .state-btn{padding:8px; color:#00C853; background-color:rgba(0,200,83,0.15); line-height: 1.3em; font-size:15px; font-weight: 600; }
+            .state-btn:hover{color:white; background-color:rgba(0,200,83,1);}
+
+            video {max-width: 100%;height: auto;}
 
 			@media screen and (max-width:500px){
 				.scroll-text{margin-bottom:550px !important}
                 html,body{font-size:16px;font-weight:400;}
+                .section-2-header{margin-top:-620px}        
+                .section-cost-header{margin-top:-660px;}
+                #chart-2-text-1 {margin-top:-1730px !important; height: 950px;}
+                #chart-3-text-1 {margin-top:-1720px !important;}
 			}
 			@media screen and (min-width:501px){
 				.scroll-text{margin-bottom:650px !important;font-size:24px}
@@ -129,7 +142,7 @@
 				}(document, 'script', 'facebook-jssdk'));
 </script> -->
 
-<div class="uk-position-relative" style="background:url('img/iwk-bg-header.jpg');background-size:cover;background-position:top center;">
+<div class="uk-position-relative" style="background:url('img/iwk-bg-header-600px-7frm.gif');background-size:cover;background-position:top center;" uk-img>
     <!-- <div style="background:rgba(255,255,255,0.8);z-index:999999999;">
         <div class="uk-container uk-container-xsmall">
             <header class="uk-navbar-container uk-navbar-transparent" uk-navbar>
@@ -160,8 +173,10 @@
             <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700; color:white; padding-top: 50px;">
                 <span class="main-title-small">How much</span>
                 <span class="main-title-big">water</span>
-                <span class="main-title-small">do Malaysians use compared</span>
-                <span class="main-title-small">to the rest of the world?</span></h2>
+                <span class="main-title-small">do Malaysians use</span>
+                <span class="main-title-small">compared to the</span>
+                <span class="main-title-small">rest of the world?</span>
+            </h2>
             <div class="header-paragraph">
                 <p>Have you ever checked your water bill to understand how much water does your household use every month? Do you know where the water goes when you flush it down the toilet or kitchen sink?</p> 
                 <p>Despite more frequent and longer water disruptions in recent years, especially in urban areas, most of us continue to take our water supply and disposal for granted. This interactive webpage will help you understand the issues and reveal some surprises.</p>
@@ -184,63 +199,62 @@
             </div>
             <div id="answer-box-1" class="uk-margin-medium-bottom" style="opacity:0; text-align:center;">
                 <div class="uk-text-medium uk-text-bold uk-padding-small chart-1-answer" style="color:#033A66;" >Answer<span class="uk-text-bold highlight-num" style="color: white;display: block; font-size:50px; line-height: 0.8em;">201</span> litres</div>
-                <div class="uk-text-left"><p><span id="answer1">You’re a genius! You’ve got the exact answer. Hmm… are you cheating? Only <span id='compareUser1'>0</span>% people who played this quiz got it right.</span></p></div>
+                <div class="uk-text-left"><p><span id="answer1"style="color:#B3E5FC;" >You’re a genius! You’ve got the exact answer. Hmm… are you cheating? Only <span id='compareUser1'>0</span>% people who played this quiz got it right.</span></p></div>
                 <div class="uk-text-small" style="color:white;" >Household water consumption of selected countries</div>
                 <div id="chart-container-1b" class="chart-container"></div>
-                <div class="uk-text-left uk-margin-medium-top"><p>The latest data shows that in 2017 the average Malaysian used <span class="highlight-num uk-text-bold">201 litres</span> of water a day for household purposes like drinking, cooking, washing and showering. This number is <span class="highlight-num uk-text-bold">22%</span> more than the <span class="highlight-num uk-text-bold">165 liters</span> recommended by the United Nations. We also used more water compared to our neighbours like Singapore (143 litres in 2017) and Thailand (90 litres in 2011).</p></div>
+                <div class="uk-text-left uk-margin-medium-top" style="color:#B3E5FC;"><p>The latest data shows that in 2017 the average Malaysian used <span class="highlight-num uk-text-bold">201 litres</span> of water a day for household purposes like drinking, cooking, washing and showering. This number is <span class="highlight-num uk-text-bold">22%</span> more than the <span class="highlight-num uk-text-bold">165 liters</span> recommended by the United Nations. We also used more water compared to our neighbours like Singapore (143 litres in 2017) and Thailand (90 litres in 2011).</p></div>
             </div>  
         </div>  
         <div>
             <ul class="chart-text-wrapper uk-list uk-container uk-container-xsmall uk-text-center" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
                 <li id="chart-1-text-1">
                     <h3>Let’s start with a basic test of your water knowledge.</h3>
-                    <p>How much water do you think each Malaysian uses daily for household purposes compared to other countries?</p>
+                    <p style="color:#B3E5FC;">How much water do you think each Malaysian uses daily for household purposes compared to other countries?</p>
                 </li>
             </ul>
         </div>
     </div>
 </section>
 
-<section id="section-national">
-    <div class="uk-section-default uk-height-viewport" uk-scrollspy="cls: uk-animation-fade;">
-        <div class="uk-height-viewport" style="background:url('img/iwk-bg-section2-r2.jpg') no-repeat center center;background-size:cover;"></div>
+<section id="section-national" style="background-color: #E3F9FC;">
+    <div class="uk-section-default uk-height-viewport" >
+        <div class="uk-height-viewport" style="background:url('img/iwk-bg-section2.jpg') no-repeat center center;background-size:cover;"  uk-img></div>
     </div>
-    <div class="uk-container uk-container-xsmall" style="margin-top:-462px">
-        <ul class="uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
-            <li class="scroll-text uk-overlay-primary">
-                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;"><span class="uk-text-large">Water use</span><br>within Malaysia</h2>
-                <hr class="uk-divider-small">
+    <div class="uk-container uk-container-xsmall section-2-header" >
+        <ul class="uk-list">
+            <li class="scroll-text">
+                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:0.7em; color: #033A66; font-size:100px;"><span style="font-size:50px; color: #00C853;">Water use within</span><br> Malaysia</h2>
             </li>
-            <div class="chart-wrapper-2 uk-container uk-container-small" uk-sticky="offset: 100; bottom: #section-national">
-                <div id="state-menu-container" class="uk-container uk-margin-medium-bottom" style="opacity:0">
-                    <h3>Which state do you live in?</h3>
+            <div class="chart-wrapper-2 uk-container uk-container-small" uk-sticky="offset: 50; bottom: #section-national">
+                <div id="state-menu-container" class="uk-container uk-margin-medium-bottom" style="opacity:0; text-align: center;">
+                    <h3 style="line-height: 0.9; color:#033A66;">Which state do you live in?</h3>
                     <div class="button-box uk-child-width-1-2 uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-small" uk-grid="margin:0">
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Perlis</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Kedah</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Kelantan</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Terengganu</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Pulau Pinang</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Perak</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Pahang</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">N. Sembilan</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Melaka</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Johor</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Sabah</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Sarawak</a></div>
-                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize" style="font-size:14px">Selangor, KL &<br>Putrajaya</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Perlis</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Kedah</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Kelantan</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Terengganu</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Pulau Pinang</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Perak</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Pahang</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">N. Sembilan</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Melaka</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Johor</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Sabah</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Sarawak</a></div>
+                        <div><a class="btnState uk-button uk-button-secondary uk-button-small uk-border-rounded uk-width-1-1 uk-text-capitalize state-btn">Selangor, KL &<br>Putrajaya</a></div>
                     </div>
                 </div>
                 <div id="answer-box-2" style="opacity:0">
                     <div class="uk-text-small uk-text-center">Household water consumption by state in 2017</div>
                     <div id="chart-container-2"  class="chart-container"></div>
-                    <div class="uk-text-left">
+                    <div class="uk-text-left" style="margin:50px 0px; color:#033A66;">
                         <p><span class="highlight-num uk-text-bold">Penangites</span> tops the chart with <span class="highlight-num uk-text-bold">277 litres</span> per day, almost <span class="highlight-num uk-text-bold">3 times</span> the amount used by Sabahans which is 108 litres per day. The data also show that domestic water consumption has little to do with people's income or urbanisation level as the top five states consist of both wealthier, more developed states (Pulau Pinang and Melaka) and those with lower income and less urbanised states (Perlis and Perak).</p>
                         <p>Only three states - <span class="highlight-num uk-text-bold">Sarawak, Kelantan and Sabah</span> - meet the water use amount recommended by the United Nations. However this doesn't mean people in those states are better water savers. Compared to other states, fewer people (lower than 90%) in the three states have <a href="https://www.span.gov.my/article/view/population-served-2015-2016" target="_blank">access to public water supply</a>. Their water use from other alternative sources such as wells and rivers is not recorded in the data above.</p>
                     </div>
                 </div>
             </div>
-            <li id="chart-2-text-1" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>However, the average number doesn’t paint the real picture because the amount of water used varies largely in different areas. Let's take a look at water consumption for household purposes in different states.</p>
+            <li id="chart-2-text-1" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center">
+                <p style="color:#033A66">However, the average number doesn’t paint the real picture because the amount of water used varies largely in different areas. Let's take a look at water consumption for household purposes in different states.</p>
             </li>
         </ul>
     </div>
@@ -248,22 +262,21 @@
 
 <section id="section-disposal">
     <div class="uk-section-default uk-height-viewport" uk-sticky="bottom:true">
-        <div class="uk-height-viewport" style="background:url('img/syariah-court.jpg') no-repeat center center;background-size:cover;"></div>
+        <div class="uk-height-viewport" style="background:url('img/iwk-bg-section3.jpg') no-repeat center center;background-size:cover;" uk-img></div>
     </div>
     <div class="uk-container uk-container-xsmall" style="margin-top:-462px">
         <ul class="chart-text-wrapper uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
-            <li class="scroll-text uk-overlay-primary">
+            <li class="scroll-text">
                 <div>
-                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;"><span class="uk-text-large">Wastewater</span> <br>Disposal</h2>
-                <hr class="uk-divider-small">
+                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:0.8em;color: #033A66; font-size:100px;"><span style="font-size:50px; color: #00C853;">Wastewater</span> <br>Disposal</h2>
                 </div>
             </li>
-            <li class="scroll-text uk-overlay-primary uk-padding-small">
+            <li class="scroll-text uk-padding-small" style="background-color:rgba(4,58,102,0.8);">
                 <p>Most of the water we use is flushed down the toilet or kitchen sink as wastewater but the story doesn’t end there.</p> 
                 <p>Wastewater has to be treated and disposed through an efficient sewerage system so that harmful substances won’t go into our rivers and sea causing pollution or spreading diseases.</p>
                 <p>Hence the more water we use (or waste), the more wastewater we need to treat, and the treatment process costs a lot of money.</p>
             </li>
-            <li class="scroll-text uk-overlay-primary uk-padding-small">
+            <li class="scroll-text uk-padding-small" style="background-color:rgba(4,58,102,0.8);">
                 <p>With the exception of Sabah, Sarawak, Kelantan and several local authorities in Johor, the sewerage system in Malaysia is developed and maintained by Indah Water Konsortium (IWK), a company owned by the federal government.</p> 
                 <p>Its sewerage service covers some 26 million people, which is slightly over 80% of Malaysia’s total population.</p>
             </li>
@@ -271,83 +284,85 @@
     </div>
 </section>
 
-<section id="section-video1">
+<section id="section-video1" style="background-color:#5284C7; padding:0px 0px 40px 0px;" >
     <div class="uk-section-default uk-height-viewport" uk-sticky="bottom:true">
-        <div class="uk-height-viewport" style="background:url('img/multiracial.jpg') no-repeat center center;background-size:cover;"></div>
-    </div>
-    <div class="uk-container uk-container-xsmall" style="margin-top:-462px">
+        <video poster="img/plant.jpg" playsinline loop class="uk-width-1-1" uk-video="autoplay: inview" loading="lazy">
+            <source src="video/IWK-Interactive.mp4" type="video/mp4">
+            <source src="video/IWK-Interactive.webm" type="video/webm">
+            <source src="video/IWK-Interactive.ogv" type="video/ogv">
+        </video>
+    </div>    
+    <div class="uk-container uk-container-xsmall" style="margin-top:-462px;">
         <ul class="chart-text-wrapper uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
-            <li class="scroll-text uk-overlay-primary">
+            <li class="scroll-text">
                 <div>
-                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;">Iwk<br>Video</h2>
-                <hr class="uk-divider-small">
+                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;font-size:2.7em; color: white !important;"><span style="font-size:40px; color: #00C853;">Dirty, difficult and</span><br>dangerous</h2>
                 </div>
             </li>
-            <!-- kskk -->
-            <li class="scroll-text uk-overlay-primary uk-padding-small">
-                <p>“Dirty, dangerous and difficult” might be the best way to describe the works done by IWK employees as they have to deal with the sludge from our toilets on a daily basis.</p> 
+            <li class="scroll-text uk-overlay-primary uk-padding-small" style="color:white;">
+                <p>“Dirty, difficult and dangerous” might be the best way to describe the works done by IWK employees as they have to deal with the sludge from our toilets on a daily basis.</p> 
             </li>
-            <li id="video-trigger-text" class="scroll-text uk-overlay-primary uk-padding-small">
+            <li class="scroll-text uk-overlay-primary uk-padding-small" style="color:white;">
                 <p>One of the services provided by IWK, as shown in this video, is the desludging of individual septic tank in residential houses.</p> 
             </li>
-            <li class="scroll-text uk-overlay-primary uk-padding-small">
+            <li class="scroll-text uk-overlay-primary uk-padding-small" style="color:white;">
                 <p>It is the process of emptying septic tank that is not connected to the sewerage network which should be done once every two years. Without scheduled desludging, the septic tank cannot function efficiently and untreated sewage will be released into rivers, killing aquatic life and threatening public health.</p> 
             </li>
-            <li class="scroll-text uk-overlay-primary uk-padding-small">
+            <li class="scroll-text uk-overlay-primary uk-padding-small" style="color:white;">
                 <p>Individual septic tank is the most common form of sewerage system in Malaysia. There are over 1.2 million premises with such tanks in the country.</p> 
             </li>
         </ul>
     </div>
 </section>
 
-<section id="section-cost">
-    <div class="uk-section-default uk-height-viewport" uk-scrollspy="cls: uk-animation-fade;">
-        <div class="uk-height-viewport" style="background:url('img/treatment.jpg') no-repeat center center;background-size:cover;"></div>
+<section id="section-cost" style="background-color: #537590;">
+    <div class="uk-section-default uk-height-viewport">
+        <div class="uk-height-viewport" style="background:url('img/iwk-bg-section5.jpg') no-repeat center center;background-size:cover;" uk-img></div>
     </div>
-    <div class="uk-container uk-container-xsmall" style="margin-top:-600px">
-        <ul class="uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
-            <li class="scroll-text uk-overlay-primary">
-                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;"><span class="uk-text-large">How much does wastewater</span><br>cost us?</h2>
-                <hr class="uk-divider-small">
-            </li>
+    <div class="uk-container uk-container-xsmall section-cost-header">
+        <li class="scroll-text">
+            <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700; line-height:0.7em; color: #033A66; font-size:90px;"><span style="font-size:35px;">How much does wastewater</span><br>cost us?</h2>
+        </li>
+        <ul class="uk-list">
             <div class="chart-wrapper-3 uk-text-center uk-container" uk-sticky="offset: 100; bottom: #section-cost">
                 <div id="cost-container" class="uk-container uk-margin-medium-bottom">
-                    <div id="box-above-chart-2" style="opacity:0">
-                        <div class="uk-text-medium uk-text-bold">Compare Malaysian sewerage charge with other foreign cities</div>
-                        <div class="uk-text-muted uk-text-small">Move your finger or hover over the chart to make your guess. (1m<sup>3</sup> = 1000 litres)</div>
+                    <div id="box-above-chart-2">
+                        <div class="uk-text-medium uk-text-bold" style="color:white">Compare Malaysian sewerage charge with other foreign cities</div>
+                        <div class=" uk-text-small uk-margin-medium-bottom" style="color:#E3F9FC;"> Move your finger or hover over the chart to make your guess. (1m<sup>3</sup> = 1000 litres)</div>
                     </div>
                     <div id="chart-container-3a" class="chart-container"></div>
                     <div id="box-below-chart-2" style="opacity:0">
-                        <div class="uk-text-medium uk-text-bold">Your guess: <span class="uk-text-bold guess-value">US$ <span id="guess-value-2">0</span></span></div>
+                        <div class="uk-text-medium uk-text-bold uk-margin-small-top" style="color:white;">Your guess: <span class="uk-text-bold guess-value">US$ <span id="guess-value-2">0</span></span></div>
                         <button id="guess-btn-2" type="button" class="uk-button uk-button-default uk-align-center" style="display:none">Submit</button>
                     </div>
                     <div id="answer-box-3" class="uk-margin-medium-bottom" style="opacity:0">
-                        <div class="uk-padding-small uk-text-medium uk-text-bold">Answer: <span class="uk-text-bold highlight-num uk-text-large">US$0.08</span></div>
-                        <div class="uk-text-left"><p><span id="answer2">ANSWER NOT READY <span id='compareUser2'>0</span>% people who played this quiz got it right.</span></p></div>
-                        <div class="uk-text-small">Sewerage fee per m<sup>3</sup> in selected cities</div>
+                        <div class="uk-text-medium uk-text-bold uk-padding-small chart-1-answer" style="color:#033A66;" >Answer<span class="uk-text-bold highlight-num" style="color: white;display: block; font-size:50px; line-height: 0.8em;">US$0.08</span></div>
+                        <div class="uk-text-left"><p><span id="answer2" style="color:#E3F9FC;">ANSWER NOT READY <span id='compareUser2'>0</span>% people who played this quiz got it right.</span></p></div>
+                        <div class="uk-text-small" style="color: white;">Sewerage fee per m<sup>3</sup> in selected cities</div>
                         <div id="chart-container-3b" class="chart-container"></div>
-                        <div class="uk-text-left"><p>The sewerage charge that we have been paying is one of the lowest in the world. Almost all residential houses in Malaysia pay only <a href="https://www.iwk.com.my/customer/domestic" target="_blank"><span class="highlight-num uk-text-bold">RM8</span> per month</a> regardless of how much wastewater they dispose. The rate for low-cost houses is only RM2 per month.</p></div>
-                        <div class="uk-text-left"><p>If we take the global average rate of US$0.99 per m<sup>3</sup>, a family of 4 with each person using 200 litres water per day, would have to pay almost <span class="highlight-num uk-text-bold">RM100</span> each month, over <span class="highlight-num uk-text-bold">12 times</span> higher than what we are paying now!</p></div>
-                        <div class="uk-text-left"><p>By now you must be delighted by this fact but you might also be wondering how can IWK make the charge so cheap? The answer is in the next section.</p></div>
+                        <div class="uk-text-left uk-margin-medium-top" style="color:#E3F9FC;">
+                            <p>The sewerage charge that we have been paying is one of the lowest in the world. Almost all residential houses in Malaysia pay only <a href="https://www.iwk.com.my/customer/domestic" target="_blank"><span class="highlight-num uk-text-bold">RM8</span> per month</a> regardless of how much wastewater they dispose. The rate for low-cost houses is only RM2 per month.</p>
+                            <p>If we take the global average rate of US$0.99 per m<sup>3</sup>, a family of 4 with each person using 200 litres water per day, would have to pay almost <span class="highlight-num uk-text-bold">RM100</span> each month, over <span class="highlight-num uk-text-bold">12 times</span> higher than what we are paying now!</p>
+                            <p>By now you must be delighted by this fact but you might also be wondering how can IWK make the charge so cheap? The answer is in the next section.</p>
+                        </div>
                     </div>                     
                 </div>
             </div>
-            <li id="chart-3-text-1" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
+            <li id="chart-3-text-1" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center">
                 <p>Every house that is served by IWK sewerage system has to pay a monthly sewerage fee to IWK. Without checking your IWK bill, do you know how much we are paying in comparison to other foreign cities?</p>
             </li>
         </ul>
     </div>
 </section>
 
-<section id="section-subsidy">
+<section id="section-subsidy" style="background-color: #ECEAED;">
     <div class="uk-section-default uk-height-viewport" uk-scrollspy="cls: uk-animation-fade;">
-        <div class="uk-height-viewport" style="background:url('img/un.svg') no-repeat center center;background-size:cover;"></div>
+        <div class="uk-height-viewport" style="background:url('img/iwk-bg-section6.jpg') no-repeat center center;background-size:cover;" uk-img></div>
     </div>
     <div class="uk-container uk-container-xsmall" style="margin-top:-462px">
         <ul class="uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
-            <li class="scroll-text uk-overlay-primary"> 
-                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;font-size:2.5em;"><span class="uk-text-large">The challenge</span> <br>Government subsidy</h2>
-                <hr class="uk-divider-small">
+            <li class="scroll-text" style="padding: 20px; background-color: rgba(4,58,102,0.8); "> 
+                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:1em;font-size:2.7em; color: white !important;"><span style="font-size:40px; color: #00C853;">The challenge</span> <br>Government subsidy</h2>
             </li>
             <div class="chart-wrapper-4 uk-text-center uk-container" uk-sticky="offset: 100; bottom: #section-subsidy">
                 <div id="subsidy-container" class="uk-container uk-margin-medium-bottom">
@@ -358,36 +373,36 @@
                     <div id="box-below-chart-3" style="opacity:0"></div>                     
                 </div>
             </div>
-            <li id="chart-4-text-1" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>The amazingly low sewerage charge that we are paying now is far from sufficient to meet IWK’s operating cost, hence IWK has to rely on government financial assistance to survive.</p>
+            <li id="chart-4-text-1" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">The amazingly low sewerage charge that we are paying now is far from sufficient to meet IWK’s operating cost, hence IWK has to rely on government financial assistance to survive.</p>
             </li>
-            <li id="chart-4-text-2" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>The government has been subsidying IWK since 2001. The annual assistance was less than RM100 million in the early 2000s.
+            <li id="chart-4-text-2" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">The government has been subsidying IWK since 2001. The annual assistance was less than RM100 million in the early 2000s.
                 </p>
             </li>
-            <li id="chart-4-text-3" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>Population growth and ever-increasing water use over the years mean higher operating cost for IWK. To maintain the cheap sewerage cost, the government has to pump in more money. The subsidy amount more than doubled in 2005 and reached a historical height of RM250 million in 2009.
+            <li id="chart-4-text-3" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">Population growth and ever-increasing water use over the years mean higher operating cost for IWK. To maintain the cheap sewerage cost, the government has to pump in more money. The subsidy amount more than doubled in 2005 and reached a historical height of RM250 million in 2009.
                 </p>
             </li>
-            <li id="chart-4-text-4" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>At the same time, IWK took over more and more sewage treatment plants, serving many more Malaysians. The number of plants maintained by IWK has doubled from 3,253 in 2001 to 6,823 in May 2019. Among those sewage treatment plants, 97% of them met the requirements set by the Department of Environment, meaning the wastewater treated by those plants is clean enough to be discharged into our rivers.</p>
+            <li id="chart-4-text-4" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">At the same time, IWK took over more and more sewage treatment plants, serving many more Malaysians. The number of plants maintained by IWK has doubled from 3,253 in 2001 to 6,823 in May 2019. Among those sewage treatment plants, 97% of them met the requirements set by the Department of Environment, meaning the wastewater treated by those plants is clean enough to be discharged into our rivers.</p>
             </li>
-            <li id="chart-4-text-5" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>The additional burden did not come with a higher price. IWK was able to deliver outstanding performance without asking for more financial assistance. The annual subsidy was kept at RM200 million from 2013 to 2016.</p>
+            <li id="chart-4-text-5" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">The additional burden did not come with a higher price. IWK was able to deliver outstanding performance without asking for more financial assistance. The annual subsidy was kept at RM200 million from 2013 to 2016.</p>
             </li>
-            <li id="chart-4-text-6" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>With more cost optimisation exercises and increasing collection rate, IWK was able to reduce the government assistance in the last 3 years to RM140 million in 2018. This amount will drop to RM110 million in 2020, according to the government budget.</p>
+            <li id="chart-4-text-6" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">With more cost optimisation exercises and increasing collection rate, IWK was able to reduce the government assistance in the last 3 years to RM140 million in 2018. This amount will drop to RM110 million in 2020, according to the government budget.</p>
             </li>
-            <li id="chart-4-text-7" class="chart-text-wrapper scroll-text uk-overlay-primary uk-padding-small uk-text-center">
-                <p>The government subsidy from 2001 to June 2019 totals up to a whopping RM2.68 billion. If the money were to be used to build schools, we could have 357 new schools or 19 schools each year.</p>
+            <li id="chart-4-text-7" class="chart-text-wrapper scroll-text uk-padding-small uk-text-center" style="background-color: rgba(4,58,102,0.8);">
+                <p style="color: white;">The government subsidy from 2001 to June 2019 totals up to a whopping RM2.68 billion. If the money were to be used to build schools, we could have 357 new schools or 19 schools each year.</p>
             </li>
         </ul>
     </div>
 </section>
 
-<section id="section-hike">
+<section id="section-hike" style="background-color: #ECEAED;">
     <div class="uk-section-default uk-height-viewport" uk-scrollspy="cls: uk-animation-fade;">
-        <div class="uk-height-viewport" style="background:url('img/un.svg') no-repeat center center;background-size:cover;"></div>
+        <div class="uk-height-viewport" style="background:url('img/iwk-bg-section7.jpg') no-repeat center center;background-size:cover;" uk-img></div>
     </div>
     <div class="uk-container uk-container-xsmall" style="margin-top:-462px">
         <ul class="uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
@@ -396,7 +411,7 @@
                 <hr class="uk-divider-small">
             </li>
             <div class="uk-container uk-container-xsmall uk-margin-medium-bottom">
-                <p>IWK has done its part to keep our rivers and waterways clean from pollutants and hazardous substances.</p>
+                <p style="margin-top: 30px;">IWK has done its part to keep our rivers and waterways clean from pollutants and hazardous substances.</p>
                 <p>However, if IWK continues to rely on government financial assistance for its operation, it would not be <span class="uk-text-bold highlight-num">sustainable</span> for both IWK and the government. The taxpayer money can be used for more meaningful purposes such as education.</p>
                 <p>Without a strong financial foothold, IWK would not be able to [needs client input - e.g. upgrade our sewerage system and future proof our environment from climate crisis such as...]</p>
                 <p>In fact, the current RM8 sewerage charge (or RM2 for low-cost houses) has <span class="highlight-num uk-text-bold">stayed the same</span> for the past <span class="uk-text-bold highlight-num">25 years</span>, since IWK started operation in 1994!</p>

@@ -28,7 +28,7 @@ $(document).ready(function() {
     var dataCountryWater = [
         {name:"Taiwan (2018)",y:280},
         {name:"US (2016)",y:222},
-        {name:"Malaysia (2017)",y:201, color:"#4188bc"},
+        {name:"Malaysia (2017)",y:201, color:"#00c853"},
         {name:"UN recommendation",y:165},
         {name:"Singapore (2017)",y:143},
         {name:"Thailand (2011)",y:90},
@@ -43,10 +43,10 @@ $(document).ready(function() {
         {name:"Selangor, KL &amp;<br>Putrajaya",y:222},
         {name:"Kedah",y:217},
         {name:"Terengganu",y:204},
-        {name:"National<br>average",y:201, color:"#4188bc"},
+        {name:"National<br>average",y:201, color:"#00c853"},
         {name:"Johor",y:200},
         {name:"Pahang",y:190},
-        {name:"UN<br>recommendation",y:165, color:"#4188bc"},
+        {name:"UN<br>recommendation",y:165, color:"#00c853"},
         {name:"Sarawak",y:165},
         {name:"Kelantan",y:141},
         {name:"Sabah",y:108},
@@ -61,7 +61,7 @@ $(document).ready(function() {
         {name:"Johannesburg,<br>South Africa", y:0.53},
         {name:"Istanbul<br>Turkey", y:0.44},
         {name:"Beijing,<br>China", y:0.20},
-        {name:"Kuala Lumpur,<br>Malaysia", y:0.08, color:"#4188bc"},
+        {name:"Kuala Lumpur,<br>Malaysia", y:0.08, color:"#00c853"},
         {name:"Hanoi,<br>Vietnam", y:0.03},
     ];
 
@@ -80,10 +80,10 @@ $(document).ready(function() {
         {year:"2014",y:0},
         {year:"2015",y:0},
         {year:"2016",y:0},
-        {year:"2017",y:0, color:"#4188bc"},
-        {year:"2018",y:0, color:"#4188bc"},
-        {year:"2019",y:0, color:"#4188bc"},
-        {year:"2020",y:0, color:"#4188bc"},
+        {year:"2017",y:0, color:"#00c853"},
+        {year:"2018",y:0, color:"#00c853"},
+        {year:"2019",y:0, color:"#00c853"},
+        {year:"2020",y:0, color:"#00c853"},
     ];
     var dataSubsidyCat = [];
     for (var i = 0; i < dataSubsidy1.length; i++){
@@ -116,7 +116,7 @@ $(document).ready(function() {
                 xaxis.removePlotLine('plot-line-x');
                 xaxis.addPlotLine({
                     value: x,
-                    color: '#E41A1C',
+                    color: '#f44336',
                     width: 2,
                     id: 'plot-line-x',
                 });
@@ -133,22 +133,22 @@ $(document).ready(function() {
             chart1a.series[0].addPoint({
                 x:  201,
                 y:  10,
-                color: '#4188BC',
+                color: '#00c853',
                 marker: {radius: 7},   
                 id: 'point-my', 
                 name: 'Malaysia<br>(2017)',
-                dataLabels: {borderColor: '#4188BC', borderWidth: 2, y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#00c853', borderWidth: 2, y:15, verticalAlign: 'top'}
             },true,false);  
             chart1a.series[0].addPoint({
                 x:  guessX,
                 y:  10,
-                color: '#E41A1C',
+                color: '#f44336',
                 marker: {radius: 7},   
                 id: 'point-new', 
                 name: 'Your guess',
-                dataLabels: {borderColor: '#E41A1C', y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
             },true,false);                          
-            dataCountryWater.push({name:"Your guess", y:parseInt(guessX), color:"#E41A1C"});
+            dataCountryWater.push({name:"Your guess", y:parseInt(guessX), color:"#f44336"});
             dataCountryWater = dataCountryWater.sort(function (a, b) {
                 return b.y - a.y;
             });
@@ -171,7 +171,7 @@ $(document).ready(function() {
                 xaxis.removePlotLine('plot-line-x');
                 xaxis.addPlotLine({
                     value: x,
-                    color: '#E41A1C',
+                    color: '#f44336',
                     width: 2,
                     id: 'plot-line-x',
                 });
@@ -189,22 +189,22 @@ $(document).ready(function() {
             chart3a.series[0].addPoint({
                 x:  0.08,
                 y:  10,
-                color: '#4188BC',
+                color: '#00c853',
                 marker: {radius: 7},   
                 id: 'point-my', 
                 name: 'Kuala Lumpur<br>Malaysia',
-                dataLabels: {borderColor: '#4188BC', borderWidth: 2, x:10, y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#00c853', borderWidth: 2, x:10, y:15, verticalAlign: 'top'}
             },true,false);
             chart3a.series[0].addPoint({
                 x:  guessY,
                 y:  10,
-                color: '#E41A1C',
+                color: '#f44336',
                 marker: {radius: 7},   
                 id: 'point-new', 
                 name: 'Your guess',
-                dataLabels: {borderColor: '#E41A1C', y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
             },true,false);                
-            dataCost.push({name:"Your guess", y:Number(guessY), color:"#E41A1C"});
+            dataCost.push({name:"Your guess", y:Number(guessY), color:"#f44336"});
             dataCost = dataCost.sort(function (a, b) {
                 return b.y - a.y;
             });
@@ -226,7 +226,7 @@ $(document).ready(function() {
                 var x = xaxis.toValue(e.offsetX-11, true); 
                 xaxis.addPlotLine({
                     value: x,
-                    color: '#E41A1C',
+                    color: '#f44336',
                     width: 2,
                     id: 'plot-line-x',
                 });
@@ -240,11 +240,11 @@ $(document).ready(function() {
                 chart1a.series[0].addPoint({
                     x:  guessX,
                     y:  10,
-                    color: '#E41A1C',
+                    color: '#f44336',
                     marker: {radius: 7},   
                     id: 'point-new', 
                     name: 'Your guess',
-                    dataLabels: {borderColor: '#E41A1C', y:15, verticalAlign: 'top'}
+                    dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
                 },true,false);
                 $("#guess-value-1").html(guessX);
                 answered1 = 1;
@@ -252,13 +252,13 @@ $(document).ready(function() {
                 chart1a.series[0].addPoint({
                         x:  201,
                         y:  10,
-                        color: '#4188BC',
+                        color: '#00c853',
                         marker: {radius: 7},   
                         id: 'point-my', 
                         name: 'Malaysia<br>(2017)',
-                        dataLabels: {borderColor: '#4188BC', borderWidth: 2, y:15, verticalAlign: 'top'}
+                        dataLabels: {borderColor: '#00c853', borderWidth: 2, y:15, verticalAlign: 'top'}
                     },true,false);
-                dataCountryWater.push({name:"Your guess", y:parseInt(guessX), color:"#E41A1C"});
+                dataCountryWater.push({name:"Your guess", y:parseInt(guessX), color:"#f44336"});
                 dataCountryWater = dataCountryWater.sort(function (a, b) {
                     return b.y - a.y;
                 });
@@ -278,7 +278,7 @@ $(document).ready(function() {
                 var x = xaxis.toValue(e.offsetX-11, true); 
                 xaxis.addPlotLine({
                     value: x,
-                    color: '#E41A1C',
+                    color: '#f44336',
                     width: 2,
                     id: 'plot-line-x',
                 });
@@ -292,11 +292,11 @@ $(document).ready(function() {
                 chart3a.series[0].addPoint({
                     x:  guessY,
                     y:  10,
-                    color: '#E41A1C',
+                    color: '#f44336',
                     marker: {radius: 7},   
                     id: 'point-new', 
                     name: 'Your guess',
-                    dataLabels: {borderColor: '#E41A1C', y:15, verticalAlign: 'top'}
+                    dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
                 },true,false);
                 $("#guess-value-2").html(guessY);
                 answered2 = 1;
@@ -304,13 +304,13 @@ $(document).ready(function() {
                 chart3a.series[0].addPoint({
                         x:  0.08,
                         y:  10,
-                        color: '#4188BC',
+                        color: '#00c853',
                         marker: {radius: 7},   
                         id: 'point-my', 
                         name: 'Kuala Lumpur<br>Malaysia',
-                        dataLabels: {borderColor: '#4188BC', borderWidth: 2, x:10, y:15, verticalAlign: 'top'}
+                        dataLabels: {borderColor: '#00c853', borderWidth: 2, x:10, y:15, verticalAlign: 'top'}
                     },true,false);
-                dataCost.push({name:"Your guess", y:Number(guessY), color:"#E41A1C"});
+                dataCost.push({name:"Your guess", y:Number(guessY), color:"#f44336"});
                 dataCost = dataCost.sort(function (a, b) {
                     return b.y - a.y;
                 });
@@ -331,7 +331,7 @@ $(document).ready(function() {
             for (var i = 0; i < dataStateWater.length; i++){
                 dataStateWaterCat.push(dataStateWater[i].name);
                 if (dataStateWater[i].name == yourState){
-                    dataStateWater[i].color = "#E41A1C";
+                    dataStateWater[i].color = "#f44336";
                     dataStateWater[i].note = "Your state";
                 }
             }
@@ -430,13 +430,14 @@ $(document).ready(function() {
         format: 'Year {point.year}<br>RM{point.y}mil',
         y: -10,
         borderRadius: 5,
-        borderWidth: 0.5,
+        borderWidth: 0,
         borderColor: '#585858',
-        backgroundColor: 'rgba(256, 256, 256, 0.9)',
+        backgroundColor: '#fff',
         shape: 'callout',
         style:{
             fontSize: '14px',
             fontWeight: 'normal',
+            color: '#033a66'
         },
     };
 
@@ -515,31 +516,31 @@ $(document).ready(function() {
             chart: {
                 renderTo: 'chart-container-1a', 
                 type: 'scatter',
+                backgroundColor: "#043A66",
             },
-            title: {
-                text: null,
-            },
-            subtitle: {
-                enabled: false,
-            },
+            title: {text: null,},
+            subtitle: {enabled: false,},
             xAxis: {
                 title: {
                   text:'litres per person per day',
+                  style: {color:"#fff"},
                 },
+                tickColor: '#b3e5fc',
+                lineColor: '#b3e5fc',
                 max:300,
                 min:50,
-                tickPositions: [50, 100, 200, 300]
+                tickPositions: [50, 100, 200, 300],
+                labels: {style: {color: '#fff'}}
             },
-
             yAxis: {    
                 title: {text: null},
                 labels: {enabled: false},
-                gridLineWidth: 2
+                gridLineWidth: 2,
+                gridLineColor: '#b3e5fc',
             },
             tooltip: {enabled: false,},
             credits: { enabled: false, },
             legend:{enabled: false,},
-            
             plotOptions: {
                 series: {
                     stickyTracking: false,
@@ -551,13 +552,14 @@ $(document).ready(function() {
                         y: -15,
                         borderRadius: 5,
                         borderWidth: 0.5,
-                        borderColor: '#d3d3d3',
-                        backgroundColor: 'rgba(256, 256, 256, 0.9)',
+                        borderColor: 'rgba(179, 229, 252, 0.2)',
+                        backgroundColor: 'rgba(179, 229, 252, 0.2)',
                         shape: 'callout',
                         style:{
-                            color: '#666',
+                            color: '#fff',
                             fontSize: '11px',
                             fontWeight: 'normal',
+                            textOutline: null,
                         },
                     },
                     states: {hover: {enabled: false}},
@@ -565,17 +567,17 @@ $(document).ready(function() {
                 scatter: {
                     marker: {
                         radius: 5,
-                        lineColor: '#D3D3D3',
+                        lineColor: '#fff',
                         lineWidth: 1,
                     },
                 }
             },
             series: [{data:[
-                {"name":"Taiwan<br>(2018)","x":280,"y":10, "color":"#FF7F00"},
-                {"name":"US (2016)","x":222,"y":10, "color":"#FF7F00", dataLabels: {x:-15}},
-                {"name":"UN<br>recommendation","x":165,"y":10, "color":"#FF7F00", dataLabels: {x:-35,y:15,verticalAlign: 'top'}},
-                {"name":"Singapore<br>(2017)","x":143,"y":10, "color":"#FF7F00", dataLabels: {x:0}},
-                {"name":"Thailand<br>(2011)","x":90,"y":10, "color":"#FF7F00", dataLabels: {x:-15}},
+                {"name":"Taiwan<br>(2018)","x":280,"y":10, "color":"#2196f3"},
+                {"name":"US (2016)","x":222,"y":10, "color":"#2196f3", dataLabels: {x:-15}},
+                {"name":"UN<br>recommendation","x":165,"y":10, "color":"#2196f3", dataLabels: {x:-35,y:15,verticalAlign: 'top'}},
+                {"name":"Singapore<br>(2017)","x":143,"y":10, "color":"#2196f3", dataLabels: {x:0}},
+                {"name":"Thailand<br>(2011)","x":90,"y":10, "color":"#2196f3", dataLabels: {x:-15}},
             ],
             }],
         });
@@ -585,23 +587,33 @@ $(document).ready(function() {
     function makeChart1b(cat) {
         chart1b = new Highcharts.Chart({
             chart: {
-                renderTo: 'chart-container-1b',type: 'bar',
+                renderTo: 'chart-container-1b',
+                type: 'bar',
+                backgroundColor: "#043A66",
             },
             title: {text: null},
             subtitle: {enabled: false},
-            xAxis: {categories: cat},  
+            xAxis: {
+                categories: cat,
+                tickColor: '#b3e5fc',
+                labels: {style: {color: '#fff'}}
+            },  
             yAxis: {
-                title: {text: 'litres per person per day', x:-40,},
+                title: {text: 'litres per person per day', x:-40, style: {color:"#fff"}},
                 endOnTick: false,
+                gridLineColor: 'rgba(179, 229, 252, 0.2)',
+                labels: {style: {color: '#fff'}}
             },
             credits: {enabled: false},
             legend: {enabled: false},
             tooltip: {
                 headerFormat: '{point.key}<br>',
                 pointFormat: '<b>{point.y} litres</b>',
+                backgroundColor: '#fff',
             },
             plotOptions: {
                 series:{
+                    borderWidth: 0,
                     groupPadding: 0.05,
                     pointPadding: 0,
                     stickyTracking: false,
@@ -616,7 +628,7 @@ $(document).ready(function() {
             },    
             series: [{
                 name:"Domestic water consumption", 
-                color:"#FF7F00", 
+                color:"#2196f3", 
                 data: dataCountryWater
             }],
         });
@@ -627,25 +639,26 @@ $(document).ready(function() {
             chart: {
                 renderTo: 'chart-container-2',type: 'bar',
                 marginLeft: 105,
+                backgroundColor: "#E3F9FC",
             },
             title: {text: null},
             subtitle: {enabled: false},
             xAxis: {categories: cat,
-                labels: {
-                    style: {
-                        whiteSpace: "nowrap",
-                    },
-                }
+                labels: {style: {whiteSpace: "nowrap",color:"#033a66"},},
             },  
             yAxis: {
-                title: {text: 'litres per person per day', x:-40,},
+                title: {text: 'litres per person per day', x:-40, style: {color:"#033a66"}},
                 endOnTick: false,
+                gridLineColor: 'rgba(3, 58, 102, 0.5)',
+                labels: {style: {color: '#033a66'}}
             },
             credits: {enabled: false},
             legend: {enabled: false},
             tooltip: {
                 headerFormat: '{point.key}<br>',
                 pointFormat: '<b>{point.y} litres</b>',
+                backgroundColor: '#fff',
+                style: {color: '#033a66'}
             },
             plotOptions: {
                 series:{
@@ -655,15 +668,13 @@ $(document).ready(function() {
                     dataLabels: {
                         whiteSpace: "nowrap",
                         enabled: true,
-                        
                     },
                 },
             },    
             series: [{
                 dataLabels: [{
-                    style: {fontSize: '11px', textOutline: null},
+                    style: {fontSize: '11px', textOutline: null, color:"#033a66"},
                     format: '{point.y}',
-                    
                 },{
                     style: {fontSize: '12px', textOutline: null},
                     format: '{point.note}',
@@ -671,7 +682,7 @@ $(document).ready(function() {
                     inside: true,
                 }],
                 name:"Domestic water consumption", 
-                color:"#FF7F00", 
+                color:"#2196f3", 
                 data: dataStateWater,
             }],
         });
@@ -683,6 +694,7 @@ $(document).ready(function() {
                 chart: {
                     renderTo: 'chart-container-3a', 
                     type: 'scatter',
+                    backgroundColor: "#537590",
                 },
                 title: {
                     text: null,
@@ -694,21 +706,24 @@ $(document).ready(function() {
                     title: {
                         useHTML: true,
                         text:'US$ per m<sup>3</sup> (1000 litres) of wastewater',
+                        style: {color:"#fff"},
                     },
                     max:2.5,
                     min:0,
-                    tickPositions: [0, 0.5, 1, 1.5, 2, 2.5]
+                    tickPositions: [0, 0.5, 1, 1.5, 2, 2.5],
+                    tickColor: '#b3e5fc',
+                    lineColor: '#b3e5fc',
+                    labels: {style: {color: '#fff'}}
                 },
-    
                 yAxis: {    
                     title: {text: null},
                     labels: {enabled: false},
-                    gridLineWidth: 2
+                    gridLineWidth: 2,
+                    gridLineColor: '#b3e5fc',
                 },
                 tooltip: {enabled: false,},
                 credits: { enabled: false, },
                 legend:{enabled: false,},
-                
                 plotOptions: {
                     series: {
                         stickyTracking: false,
@@ -720,13 +735,14 @@ $(document).ready(function() {
                             y: -15,
                             borderRadius: 5,
                             borderWidth: 0.5,
-                            borderColor: '#d3d3d3',
-                            backgroundColor: 'rgba(256, 256, 256, 0.9)',
+                            borderColor: 'rgba(179, 229, 252, 0.2)',
+                            backgroundColor: 'rgba(179, 229, 252, 0.2)',
                             shape: 'callout',
                             style:{
-                                color: '#666',
+                                color: '#fff',
                                 fontSize: '11px',
                                 fontWeight: 'normal',
+                                textOutline: null,
                             },
                         },
                         states: {hover: {enabled: false}},
@@ -734,17 +750,17 @@ $(document).ready(function() {
                     scatter: {
                         marker: {
                             radius: 5,
-                            lineColor: '#D3D3D3',
+                            lineColor: '#fff',
                             lineWidth: 1,
                         },
                     }
                 },
                 series: [{data:[
-                    {"name":"Tokyo,<br>Japan", "x":2.49, "y":10, "color":"#FF7F00", dataLabels: {x:-10}},
-                    {"name":"Sydney,<br>Australia", "x":1.41, "y":10, "color":"#FF7F00", dataLabels: {x:15}},
-                    {"name":"Global<br>average", "x":0.99, "y":10, "color":"#FF7F00", dataLabels: {x:-13}},
-                    {"name":"Singapore", "x":0.71, "y":10, "color":"#FF7F00", dataLabels: {x:35, y:15,verticalAlign: 'top'}},
-                    {"name":"Hanoi,<br>Vietnam", "x":0.03, "y":10, "color":"#FF7F00", dataLabels: {x:10}},
+                    {"name":"Tokyo,<br>Japan", "x":2.49, "y":10, "color":"#2196f3", dataLabels: {x:-10}},
+                    {"name":"Sydney,<br>Australia", "x":1.41, "y":10, "color":"#2196f3", dataLabels: {x:15}},
+                    {"name":"Global<br>average", "x":0.99, "y":10, "color":"#2196f3", dataLabels: {x:-13}},
+                    {"name":"Singapore", "x":0.71, "y":10, "color":"#2196f3", dataLabels: {x:35, y:15,verticalAlign: 'top'}},
+                    {"name":"Hanoi,<br>Vietnam", "x":0.03, "y":10, "color":"#2196f3", dataLabels: {x:10}},
                 ],
                 }],
             });
@@ -755,35 +771,44 @@ $(document).ready(function() {
         chart3b = new Highcharts.Chart({
             chart: {
                 renderTo: 'chart-container-3b',type: 'bar',
+                backgroundColor: "#537590",
             },
             title: {text: null},
             subtitle: {enabled: false},
-            xAxis: {categories: cat},  
+            xAxis: {
+                categories: cat,
+                tickColor: '#b3e5fc',
+                labels: {style: {color: '#fff'}}
+            },  
             yAxis: {
-                title: {text: 'US$ per m<sup>3</sup> (1000 litres)', x:-40,},
+                title: {text: 'US$ per m<sup>3</sup> (1000 litres)', x:-40, style: {color:"#fff"}},
                 endOnTick: false,
+                gridLineColor: 'rgba(179, 229, 252, 0.2)',
+                labels: {style: {color: '#fff'},},
             },
             credits: {enabled: false},
             legend: {enabled: false},
             tooltip: {
                 headerFormat: '{point.key}<br>',
                 pointFormat: '<b>{point.y}</b>',
+                backgroundColor: '#fff',
             },
             plotOptions: {
                 series:{
+                    borderWidth: 0,
                     groupPadding: 0.05,
                     pointPadding: 0,
                     stickyTracking: false,
                     dataLabels: {
                         enabled: true,
-                        style: {fontSize: '11px', textOutline: null},
+                        style: {fontSize: '11px', textOutline: null, color:"#fff"},
                         format: '{point.y}',
                     }
                 },
             },    
             series: [{
                 name:"Wasterwater cost", 
-                color:"#FF7F00", 
+                color:"#2196f3", 
                 data: dataCost
             }],
         });
@@ -795,21 +820,29 @@ $(document).ready(function() {
                 chart: {
                     renderTo: 'chart-container-4',
                     type: 'column',
-                    marginLeft: 60
+                    marginLeft: 60,
+                    backgroundColor: "#ECEAED",
                 },
                 title: {text: null},
                 subtitle: {enabled: false},
-                xAxis: {categories: dataSubsidyCat},  
+                xAxis: {
+                    categories: dataSubsidyCat,
+                    labels: {style: {whiteSpace: "nowrap",color:"#033a66"},},
+                },  
                 yAxis: {
-                    title: {text: 'million RM'},
+                    title: {text: 'million RM', style: {color:"#033a66"}},
                     endOnTick: false,
                     max: 250,
+                    gridLineColor: 'rgba(3, 58, 102, 0.5)',
+                    labels: {style: {color: '#033a66'}}
                 },
                 credits: {enabled: false},
                 legend: {enabled: false},
                 tooltip: {
                     headerFormat: 'Year {point.key}<br>',
                     pointFormat: '<b>RM{point.y} mil</b>',
+                    backgroundColor: '#fff',
+                    style: {color: '#033a66'}
                 },
                 plotOptions: {
                     series:{
@@ -826,7 +859,7 @@ $(document).ready(function() {
                 series: [{
                     name:"seriesSubsidy", 
                     id:"seriesSubsidy", 
-                    color:"#FF7F00", 
+                    color:"#2196f3", 
                     data: dataSubsidy1
                 }],
             });
