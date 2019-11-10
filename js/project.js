@@ -5,18 +5,22 @@ $(document).ready(function() {
     var chart1a, chart1b, chart2, chart3a, chart3b, chart4; 
     var guessX, guessY, yourState, payAnswer, payExtra;
     var userInputs = [];
+    var email;
     var answered1, answered2;
     var clicked2, clicked3, clicked4, clicked5;
     var chart1Loaded, chart3Loaded, chart4Loaded;
     var form1clicked, form2clicked, form3clicked;
+    var guessDataset = [];
+    var diffDataset = [];
+    var rightUser, rightPct, playerNum, resultVal;
 
     var answers1 = [
-        "You’re a genius! You’ve got the exact answer. Are you cheating? Only <span id='compareUser1'>0</span>% people before you have got it right.",
-        "Bingo! Your guess is very close to the answer. It is more accurate than <span id='compareUser1'>0</span>% of those who have played this quiz.",
-        "You’ve underestimated how much water Malaysians waste! <span id='compareUser1'>0</span>% of those who have played this quiz did better than you.",
-        "Malaysians are more prudent than you thought! <span id='compareUser1'>0</span>% of those who have played this quiz did better than you.",
-        "Seriously? Are you sure you can survive with this little water? Only <span id='compareUser1'>0</span>% of those who have played this quiz did worse than you.",
-        "No way! Malaysia might have run out of water if your guess is right. Only <span id='compareUser1'>0</span>% of those who have played this quiz did worse than you.",
+        "You’re a genius! You’ve got the exact answer. Are you cheating? Only <div class='compareUser1'>50%</div> people before you have got it right.",
+        "Bingo! Your guess is very close to the answer. It is more accurate than <div class='compareUser1'>50%</div> of those who have played this quiz.",
+        "You’ve underestimated how much water Malaysians waste! But that's alright because <div class='compareUser1'>50%</div> of those who have played this quiz did worse than you.",
+        "Malaysians are more prudent than you thought! But you still do better than <div class='compareUser1'>50%</div> of those who have played this quiz.",
+        "Seriously? Are you sure you can survive with this little water? Only <div class='compareUser1'>50%</div> of those who have played this quiz did worse than you.",
+        "No way! Malaysia might have run out of water if your guess is right. Only <div class='compareUser1'>50%</div> of those who have played this quiz did worse than you.",
     ];
 
     var answers2 = [
@@ -53,16 +57,16 @@ $(document).ready(function() {
     ];
 
     var dataCost = [
-        {name:"Tokyo,<br>Japan", y:2.49},
-        {name:"Sydney,<br>Australia", y:1.41},
-        {name:"London<br>UK",y: 1.20},
-        {name:"Global<br>average", y:0.99},
-        {name:"Singapore", y:0.71},
-        {name:"Johannesburg,<br>South Africa", y:0.53},
-        {name:"Istanbul<br>Turkey", y:0.44},
-        {name:"Beijing,<br>China", y:0.20},
-        {name:"Kuala Lumpur,<br>Malaysia", y:0.08, color:"#00c853"},
-        {name:"Hanoi,<br>Vietnam", y:0.03},
+        {name:"Tokyo,<br>Japan", y:10.43},
+        {name:"Sydney,<br>Australia", y:5.91},
+        {name:"London<br>UK",y:5.03},
+        {name:"Global<br>average", y:4.15},
+        {name:"Singapore", y:2.97},
+        {name:"Johannesburg,<br>South Africa", y:2.22},
+        {name:"Istanbul<br>Turkey", y:1.84},
+        {name:"Beijing,<br>China", y:0.84},
+        {name:"Malaysia", y:0.34, color:"#00c853"},
+        {name:"Hanoi,<br>Vietnam", y:0.13},
     ];
 
     var dataSubsidy1 = [
@@ -100,20 +104,58 @@ $(document).ready(function() {
     }
 
     function getAnswer2(d) {
-        return d == 0.08 ? answers2[0] :
-               d >= 0.01 && d <= 0.5 ? answers2[1] :
+        return d == 0.34 ? answers2[0] :
+               d >= 0.01 && d <= 2 ? answers2[1] :
                answers2[2] ;
     }
+
+    //Retrieve previous users data from google spreadsheet and convert them into arrays
+    var spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1DzmWJe6eH3sllxiEe3lLcjKaIRIckAlgHUKcEHt2GpM/pubhtml';
+    Tabletop.init( { key: spreadsheet_url,
+                    callback: showInfo,
+                    simpleSheet: true } )
+
+    //Convert data in the spreadsheet to json and store them in "dataset"
+    function showInfo(data, tabletop) {
+        //call out the data from column "guess" in google sheet and push it into an array called dataset
+        for(var i in data) {guessDataset.push(data[i].guess);}
+        //calculate the number of entries in google sheet
+        playerNum = guessDataset.length;
+        //count how many previous users got it right at 201
+        rightUser = 0;
+        for (var i in guessDataset){
+          if(guessDataset[i]== 201){rightUser++;}
+        }   
+        //calculate the percentage of right users
+        rightPct = Math.round(rightUser/playerNum * 100);
+        //calculate the difference of each answer and the correct answer 201
+        for(var i in data) {diffDataset.push(Math.abs(data[i].guess-201));}
+    }
+
+    function calResult(){
+        if (guessX == 201){
+            resultVal = rightPct+"%";
+        } else {
+            var diffGuess = Math.abs(guessX - 201);
+            var worseUser = 0;
+            for (var i in diffDataset){
+                if(diffGuess<diffDataset[i]){worseUser++;}
+              }  
+            var worsePct = Math.round(worseUser/playerNum * 100);
+            var betterPct = 100-worsePct;
+            resultVal = worsePct+"%";
+        }
+    }
+
 
     if (width<500){
         //For chart1a mobile
         $('#chart-container-1a').on("touchmove", function(e) {       
             if (answered1 == 1){} else {
                 e.preventDefault();
-                var touchX = e.touches[0].clientX;
-                var x = touchX + 18;
                 var xaxis = chart1a.xAxis[0];
                 xaxis.removePlotLine('plot-line-x');
+                var x = xaxis.toValue(e.touches[0].pageX-27, true);
                 xaxis.addPlotLine({
                     value: x,
                     color: '#f44336',
@@ -129,7 +171,9 @@ $(document).ready(function() {
         $('#guess-btn-1').click(function(){
             $('#guess-btn-1').prop('disabled',true);
             answered1 = 1;
+            calResult();
             $("#answer1").html(getAnswer1(guessX));
+            $(".compareUser1").html(resultVal).addClass("changeBackground");
             chart1a.series[0].addPoint({
                 x:  201,
                 y:  10,
@@ -137,7 +181,7 @@ $(document).ready(function() {
                 marker: {radius: 7},   
                 id: 'point-my', 
                 name: 'Malaysia<br>(2017)',
-                dataLabels: {borderColor: '#00c853', borderWidth: 2, y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#00c853', borderWidth: 2, backgroundColor: '#043A66', y:15, verticalAlign: 'top'}
             },true,false);  
             chart1a.series[0].addPoint({
                 x:  guessX,
@@ -146,7 +190,7 @@ $(document).ready(function() {
                 marker: {radius: 7},   
                 id: 'point-new', 
                 name: 'Your guess',
-                dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#f44336', borderWidth: 2, backgroundColor: '#043A66'}
             },true,false);                          
             dataCountryWater.push({name:"Your guess", y:parseInt(guessX), color:"#f44336"});
             dataCountryWater = dataCountryWater.sort(function (a, b) {
@@ -158,16 +202,16 @@ $(document).ready(function() {
             }
             $("#answer-box-1").fadeTo(500, 1, makeChart1b(dataCountryWaterCat));
             $('#guess-btn-1').hide();
+            sendGuess();
         });    
 
         //For chart3a mobile
         $('#chart-container-3a').on("touchmove", function(e) {       
             if (answered2 == 1){} else {
                 e.preventDefault();
-                var touchX = e.touches[0].clientX;
-                var x = ((touchX + 18)/100)-0.5; 
-                console.log("touch! point = " + touchX + ", " + x);   
                 var xaxis = chart3a.xAxis[0];
+                xaxis.removePlotLine('plot-line-x');
+                var x = xaxis.toValue(e.touches[0].pageX-27, true);
                 xaxis.removePlotLine('plot-line-x');
                 xaxis.addPlotLine({
                     value: x,
@@ -182,18 +226,17 @@ $(document).ready(function() {
         }); 
 
         $('#guess-btn-2').click(function(){
-            console.log("guessed answer Y = " + guessY);  
             $('#guess-btn-2').prop('disabled',true);
             answered2 = 1;
             $("#answer2").html(getAnswer2(guessY));
             chart3a.series[0].addPoint({
-                x:  0.08,
+                x:  0.34,
                 y:  10,
                 color: '#00c853',
                 marker: {radius: 7},   
                 id: 'point-my', 
-                name: 'Kuala Lumpur<br>Malaysia',
-                dataLabels: {borderColor: '#00c853', borderWidth: 2, x:10, y:15, verticalAlign: 'top'}
+                name: 'Malaysia',
+                dataLabels: {borderColor: '#00c853', borderWidth: 2, backgroundColor: '#537590', y:15, verticalAlign: 'top'}
             },true,false);
             chart3a.series[0].addPoint({
                 x:  guessY,
@@ -202,7 +245,7 @@ $(document).ready(function() {
                 marker: {radius: 7},   
                 id: 'point-new', 
                 name: 'Your guess',
-                dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
+                dataLabels: {borderColor: '#f44336', borderWidth: 2, backgroundColor: '#537590'}
             },true,false);                
             dataCost.push({name:"Your guess", y:Number(guessY), color:"#f44336"});
             dataCost = dataCost.sort(function (a, b) {
@@ -244,20 +287,22 @@ $(document).ready(function() {
                     marker: {radius: 7},   
                     id: 'point-new', 
                     name: 'Your guess',
-                    dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
+                    dataLabels: {borderColor: '#f44336', borderWidth: 2, backgroundColor: '#043A66'}
                 },true,false);
                 $("#guess-value-1").html(guessX);
                 answered1 = 1;
+                calResult();
                 $("#answer1").html(getAnswer1(guessX));
+                $(".compareUser1").html(resultVal).addClass("changeBackground");
                 chart1a.series[0].addPoint({
-                        x:  201,
-                        y:  10,
-                        color: '#00c853',
-                        marker: {radius: 7},   
-                        id: 'point-my', 
-                        name: 'Malaysia<br>(2017)',
-                        dataLabels: {borderColor: '#00c853', borderWidth: 2, y:15, verticalAlign: 'top'}
-                    },true,false);
+                    x:  201,
+                    y:  10,
+                    color: '#00c853',
+                    marker: {radius: 7},   
+                    id: 'point-my', 
+                    name: 'Malaysia<br>(2017)',
+                    dataLabels: {borderColor: '#00c853', borderWidth: 2, backgroundColor: '#043A66', y:15, verticalAlign: 'top'}
+                },true,false);
                 dataCountryWater.push({name:"Your guess", y:parseInt(guessX), color:"#f44336"});
                 dataCountryWater = dataCountryWater.sort(function (a, b) {
                     return b.y - a.y;
@@ -266,7 +311,8 @@ $(document).ready(function() {
                 for (var i = 0; i < dataCountryWater.length; i++){
                     dataCountryWaterCat.push(dataCountryWater[i].name);
                 }
-                $("#answer-box-1").fadeTo(500, 1, makeChart1b(dataCountryWaterCat));            
+                $("#answer-box-1").fadeTo(500, 1, makeChart1b(dataCountryWaterCat));
+                sendGuess();            
             }
         }); 
 
@@ -296,20 +342,20 @@ $(document).ready(function() {
                     marker: {radius: 7},   
                     id: 'point-new', 
                     name: 'Your guess',
-                    dataLabels: {borderColor: '#f44336', y:15, verticalAlign: 'top'}
+                    dataLabels: {borderColor: '#f44336', borderWidth: 2, backgroundColor: '#537590'}
                 },true,false);
                 $("#guess-value-2").html(guessY);
                 answered2 = 1;
                 $("#answer2").html(getAnswer2(guessY));
                 chart3a.series[0].addPoint({
-                        x:  0.08,
-                        y:  10,
-                        color: '#00c853',
-                        marker: {radius: 7},   
-                        id: 'point-my', 
-                        name: 'Kuala Lumpur<br>Malaysia',
-                        dataLabels: {borderColor: '#00c853', borderWidth: 2, x:10, y:15, verticalAlign: 'top'}
-                    },true,false);
+                    x:  0.34,
+                    y:  10,
+                    color: '#00c853',
+                    marker: {radius: 7},   
+                    id: 'point-my', 
+                    name: 'Malaysia',
+                    dataLabels: {borderColor: '#00c853', borderWidth: 2, backgroundColor: '#537590', y:15, verticalAlign: 'top'}
+                },true,false);
                 dataCost.push({name:"Your guess", y:Number(guessY), color:"#f44336"});
                 dataCost = dataCost.sort(function (a, b) {
                     return b.y - a.y;
@@ -336,6 +382,8 @@ $(document).ready(function() {
                 }
             }
             $("#answer-box-2").fadeTo(500, 1, makeChart2(dataStateWaterCat));
+            $(".btnState").css('pointer-events','none');
+            $(this).css({"color":"#fff", "background-color":"rgba(0,200,83,1)"});
             clicked2 = 1;
         }
     });
@@ -343,7 +391,6 @@ $(document).ready(function() {
     $(".btnPay").click(function(){
         if (clicked3 == 1){}else{
             payAnswer = $(this).text();
-            console.log("payAnswer = " + payAnswer);
             if(payAnswer == "Yes"){
                 $(".payExtra").fadeTo(500, 1);
             } else {
@@ -359,7 +406,6 @@ $(document).ready(function() {
     $(".btnExtra").click(function(){
         if (clicked4 == 1){} else {
             payExtra = $(this).text();
-            console.log("payExtra = " + payExtra);
             clicked4 = 1;
             $(".moreQuestions").fadeTo(500, 1);
             $('.btnExtra').prop('disabled',true);
@@ -368,7 +414,6 @@ $(document).ready(function() {
     })
 
     $(".user-info-radio").click(function(){
-        console.log("radio clicked!");
         if(this.name == "form1"){form1clicked = 1;}
         if(this.name == "form2"){form2clicked = 1;}
         if(this.name == "form3"){form3clicked = 1;}
@@ -389,9 +434,11 @@ $(document).ready(function() {
                     formInputs[i].disabled = true;
                 }          
             }
-            console.log("userInputs = " + userInputs);
+            email = $("#userEmail").val();
+            $("#userEmail").prop('disabled', true);
             clicked5 = 1;
-            $('.last-btn').prop('disabled',true);
+            $('#last-btn').prop('disabled',true);
+            $(this).css({"background-color":"#999","color":"#fff"});
             $(".thankYou").fadeTo(500, 1);
             sendData()
         }        
@@ -399,29 +446,38 @@ $(document).ready(function() {
 
     $("#chart-1-text-1").waypoint(function(direction) {
         if (direction === "down") {
-            $("#box-below-chart-1, #box-above-chart-1").fadeTo(500, 1, makeChart1a());
+            if(chart1Loaded == 1){} else {
+                if (width<500){
+                    $("#logo-box-1").delay(1000).fadeIn(1000).delay(1500).fadeOut(1000);
+                }
+                $("#box-below-chart-1, #box-above-chart-1").fadeTo(1000, 1, makeChart1a());
+            }
             chart1Loaded = 1;
         } else {}
     }, {
-        offset: "40%"
+        offset: "-10%"
     });
 
     $("#chart-2-text-1").waypoint(function(direction) {
         if (direction === "down") {
-            $("#state-menu-container").fadeTo(500, 1, makeChart1a());
-            chart1Loaded = 1;
+            $("#state-menu-container").fadeTo(500, 1);
         } else { }
     }, {
-        offset: "40%"
+        offset: "10%"
     });
 
     $("#chart-3-text-1").waypoint(function(direction) {
         if (direction === "down") {
+            if(chart3Loaded == 1){} else {
+                if (width<500){
+                    $("#logo-box-2").delay(1000).fadeIn(1000).delay(1500).fadeOut(1000);
+                }
             $("#box-below-chart-2, #box-above-chart-2").fadeTo(500, 1, makeChart3a());
+            }
             chart3Loaded = 1;
         } else { }
     }, {
-        offset: "40%"
+        offset: "-10%"
     });
 
     var labelstyle ={
@@ -705,12 +761,12 @@ $(document).ready(function() {
                 xAxis: {
                     title: {
                         useHTML: true,
-                        text:'US$ per m<sup>3</sup> (1000 litres) of wastewater',
+                        text:'RM per m<sup>3</sup> (1000 litres) of wastewater',
                         style: {color:"#fff"},
                     },
-                    max:2.5,
+                    max:12,
                     min:0,
-                    tickPositions: [0, 0.5, 1, 1.5, 2, 2.5],
+                    tickPositions: [0, 2, 4, 6, 8, 10, 12],
                     tickColor: '#b3e5fc',
                     lineColor: '#b3e5fc',
                     labels: {style: {color: '#fff'}}
@@ -756,11 +812,11 @@ $(document).ready(function() {
                     }
                 },
                 series: [{data:[
-                    {"name":"Tokyo,<br>Japan", "x":2.49, "y":10, "color":"#2196f3", dataLabels: {x:-10}},
-                    {"name":"Sydney,<br>Australia", "x":1.41, "y":10, "color":"#2196f3", dataLabels: {x:15}},
-                    {"name":"Global<br>average", "x":0.99, "y":10, "color":"#2196f3", dataLabels: {x:-13}},
-                    {"name":"Singapore", "x":0.71, "y":10, "color":"#2196f3", dataLabels: {x:35, y:15,verticalAlign: 'top'}},
-                    {"name":"Hanoi,<br>Vietnam", "x":0.03, "y":10, "color":"#2196f3", dataLabels: {x:10}},
+                    {"name":"Tokyo,<br>Japan", "x":10.43, "y":10, "color":"#2196f3", dataLabels: {x:-10}},
+                    {"name":"Sydney,<br>Australia", "x":5.91, "y":10, "color":"#2196f3", dataLabels: {x:15}},
+                    {"name":"Global<br>average", "x":4.15, "y":10, "color":"#2196f3", dataLabels: {x:-13}},
+                    {"name":"Singapore", "x":2.97, "y":10, "color":"#2196f3", dataLabels: {x:35, y:15,verticalAlign: 'top'}},
+                    {"name":"Hanoi,<br>Vietnam", "x":0.13, "y":10, "color":"#2196f3", dataLabels: {x:10}},
                 ],
                 }],
             });
@@ -781,7 +837,7 @@ $(document).ready(function() {
                 labels: {style: {color: '#fff'}}
             },  
             yAxis: {
-                title: {text: 'US$ per m<sup>3</sup> (1000 litres)', x:-40, style: {color:"#fff"}},
+                title: {useHTML: true, text: 'RM per m<sup>3</sup> (1000 litres)', x:-40, style: {color:"#fff"}},
                 endOnTick: false,
                 gridLineColor: 'rgba(179, 229, 252, 0.2)',
                 labels: {style: {color: '#fff'},},
@@ -846,6 +902,7 @@ $(document).ready(function() {
                 },
                 plotOptions: {
                     series:{
+                        borderWidth: 0,
                         groupPadding: 0.05,
                         pointPadding: 0,
                         stickyTracking: false,
@@ -866,6 +923,17 @@ $(document).ready(function() {
         }    
     }    
 
+    function sendGuess() {
+        $.ajax({
+            type: 'POST',
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSfjP3H4DXVjWNWcrmRsZbVrhzVRIJrh6TgS6OvcPhQyC6-M4A/formResponse',
+            data: { 
+            "entry.2142550281":guessX,
+            "entry.1210402368":document.referrer,
+            }
+        }); 
+    }
+
     function sendData() {
         $.ajax({
             type: 'POST',
@@ -879,6 +947,7 @@ $(document).ready(function() {
             "entry.1587083114":userInputs[0],
             "entry.714099920":userInputs[1],
             "entry.340349913":userInputs[2],
+            "entry.282919883":email,
             "entry.1516523261":document.referrer,
             }
         }); 
