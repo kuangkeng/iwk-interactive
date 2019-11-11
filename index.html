@@ -57,16 +57,23 @@
             .highlight-num {color: #03A9F4;}
             .guess-value {color: #00C853;}
            
-            #chart-1-text-1{padding:30px; color:white; height: 00px;   margin-bottom:1700px !important; margin-top:-1250px !important; margin-right: -20px;margin-left: -20px;}
+            #chart-1-text-1{background-image:linear-gradient(rgba(4,58,102,1),rgba(4,58,102,1),rgba(4,58,102,0)); padding:30px; color:white; height: 700px;   margin-bottom:1700px !important; margin-top:-1250px !important; margin-right: -20px;margin-left: -20px;}
             #chart-1-text-1 h3{font-size:40px;color:white; margin-bottom: 0px;}
             #chart-1-text-1 p{margin-top: 0px;}
             .chart-1-answer{background-color: #00C853; padding:15px 35px; color:white; display: inline-block; border-radius:5px;margin:30px;}
 
-            .section-2-header{margin-top:-900px;}
+            .section-2-header{margin-top:-790px;}
             .section-cost-header{margin-top:-1050px;}
+            .section-cost-header .scroll-text{margin-bottom:800px !important;}
+            #section-cost > .uk-height-viewport{min-height:105vh !important;}
+            #section-cost > .uk-height-viewport > .uk-height-viewport{min-height:105vh !important;}
+            #section-subsidy > .uk-height-viewport {min-height:110vh !important;}
+            #section-subsidy > .uk-height-viewport > .uk-height-viewport{min-height:110vh !important;}
+            #section-hike > .uk-height-viewport > .uk-height-viewport{min-height:110vh !important;}
+            #section-hike > .uk-height-viewport > .uk-height-viewport{min-height:110vh !important;}
 
             #chart-2-text-1 {background-image:linear-gradient(rgba(227,249,252,1),rgba(227,249,252,1),rgba(227,249,252,0)); padding:30px; color:white; height: 700px;  margin-bottom:1700px !important; margin-top:-1560px !important; justify-content: center; margin-right: -20px;margin-left: -20px;}
-            #chart-3-text-1 {padding:30px; color:white; height: 900px; margin-bottom:1700px !important; margin-top:-1500px !important; justify-content: center; margin-right: -20px;margin-left: -20px;}
+            #chart-3-text-1 {background-image:linear-gradient(rgba(83,118,144,1),rgba(83,118,144,1),rgba(83,118,144,0)); padding:30px; color:white; height: 900px; margin-bottom:1700px !important; margin-top:-1500px !important; justify-content: center; margin-right: -20px;margin-left: -20px;}
             .button-box div {margin-bottom: 10px;}
         
             .main-title-small{font-size:0.8em; display: block;}
@@ -301,15 +308,15 @@
 </section>
 
 <section id="section-video" style="background-color:#5284C7; padding:0px 0px 40px 0px;" >
-    <div class="uk-section-default uk-height-viewport" uk-sticky="bottom:true">
-        <video poster="img/iwk-video-poster-hor.jpg" playsinline muted loop class="uk-width-1-1 uk-visible@s" uk-video="autoplay: inview" loading="lazy">
+    <div class="uk-height-viewport" uk-sticky="bottom:true">
+        <video poster="img/iwk-video-poster-hor.jpg" playsinline muted loop class="uk-width-1-1 uk-visible@s uk-height-viewport" uk-video="autoplay: inview" loading="lazy">    
             <source src="video/IWK-Interactive.mp4" type="video/mp4">
             <source src="video/IWK-Interactive.webm" type="video/webm">
             <source src="video/IWK-Interactive.ogv" type="video/ogv">
         </video>
-        <!-- <video poster="img/iwk-bg-section3.jpg" playsinline muted loop class="uk-width-1-1 uk-hidden@s" uk-video="autoplay: inview" loading="lazy">
+        <video poster="img/iwk-bg-section3.jpg" playsinline muted loop class="uk-width-1-1 uk-hidden@s" uk-video="autoplay: inview" loading="lazy">
             <source src="video/IWK-Interactive-ver.mp4" type="video/mp4">
-        </video> -->
+        </video>
     </div>    
     <div class="uk-container uk-container-xsmall " style="margin-top:-462px;">
         <ul class="chart-text-wrapper uk-list" uk-scrollspy="cls: uk-animation-fade; target: > li; repeat: true">
