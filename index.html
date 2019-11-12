@@ -317,12 +317,12 @@
 
 <section id="section-video" style="background-color:#5284C7; padding:0px 0px 40px 0px;" >
     <div class="uk-height-viewport" uk-sticky="bottom:true">
-        <video poster="img/iwk-video-poster-hor.jpg" playsinline muted loop class="uk-width-1-1 uk-visible@s uk-height-viewport" uk-video="autoplay: inview" loading="lazy">    
+        <video id="video-desktop" poster="img/iwk-video-poster-hor.jpg" playsinline muted loop class="uk-width-1-1 uk-height-viewport" uk-video="autoplay: inview" loading="lazy">    
             <source src="video/IWK-Interactive.mp4" type="video/mp4">
             <source src="video/IWK-Interactive.webm" type="video/webm">
             <source src="video/IWK-Interactive.ogv" type="video/ogv">
         </video>
-        <video poster="img/iwk-video-poster-ver.jpg" playsinline muted loop class="uk-width-1-1 uk-hidden@s uk-height-viewport" uk-video="autoplay: inview" loading="lazy">
+        <video id="video-mobile" poster="img/iwk-video-poster-ver.jpg" playsinline muted loop class="uk-width-1-1 uk-height-viewport" uk-video="autoplay: inview" loading="lazy">
             <source src="video/IWK-Interactive-ver.mp4" type="video/mp4">
         </video>
     </div>    
@@ -376,7 +376,7 @@
                         <div class="uk-text-small" style="color: white;">Sewerage fee per m<sup>3</sup> in selected cities</div>
                         <div id="chart-container-3b" class="chart-container"></div>
                         <div class="uk-text-left uk-margin-medium-top" style="color:#E3F9FC;">
-                            <p>The sewerage charge that we have been paying is one of the lowest in the world. Almost all residential houses in Malaysia pay only <a href="https://www.iwk.com.my/customer/domestic" target="_blank"><span class="highlight-num uk-text-bold">RM8</span> per month</a> regardless of how much wastewater they dispose. The rate for low-cost houses is only RM2 per month.</p>
+                            <p>The sewerage charge that we have been paying is one of the lowest in the world. Almost all residential houses in Malaysia pay only <span class="highlight-num uk-text-bold">RM8</span> per month regardless of how much wastewater they dispose. The rate for low-cost houses is only RM2 per month.</p>
                             <p>If we take the global average rate of RM4.15(US$0.99) per m<sup>3</sup>, a family of 4 with each person using 200 litres water per day, would have to pay almost <span class="highlight-num uk-text-bold">RM100</span> each month, over <span class="highlight-num uk-text-bold">12 times</span> higher than what we are paying now!</p>
                             <p>By now you must be delighted by this fact but you might also be wondering how can IWK make the charge so cheap? The answer is in the next section.</p>
                         </div>
@@ -402,7 +402,7 @@
             <div class="chart-wrapper-4 uk-text-center uk-container" uk-sticky="offset: 100; bottom: #section-subsidy">
                 <div id="subsidy-container" class="uk-container uk-margin-medium-bottom">
                     <div id="box-above-chart-3" style="opacity:0">
-                        <div class="uk-text-medium uk-text-bold">Government financial asistance to IWK (2003-2018)</div>
+                        <div class="uk-text-medium uk-text-bold">Government financial asistance to IWK<br>(2003-2018)</div>
                     </div>
                     <div id="chart-container-4" class="chart-container"></div>
                     <div id="box-below-chart-3" style="opacity:0"></div>                     
