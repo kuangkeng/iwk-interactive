@@ -152,9 +152,6 @@ $(document).ready(function() {
 
 
     if (width<500){
-        //show only mobile video
-        $("#video-mobile").hide();
-
         //For chart1a mobile
         $('#chart-container-1a').on("touchmove", function(e) {       
             if (answered1 == 1){} else {
@@ -267,8 +264,6 @@ $(document).ready(function() {
 
 
     } else {
-        //show only desktop video
-        $("#video-mobile").hide();
         // Chart1a desktop
         $('#chart-container-1a').mousemove(function(e){      
             if (answered1 == 1){} else {
