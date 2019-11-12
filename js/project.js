@@ -12,7 +12,7 @@ $(document).ready(function() {
     var form1clicked, form2clicked, form3clicked;
     var guessDataset = [];
     var diffDataset = [];
-    var rightUser, rightPct, playerNum, resultVal;
+    var rightUser, rightPct, playerNum, resultVal, result_share;
 
     var answers1 = [
         "You’re a genius! You’ve got the exact answer. Are you cheating? Only <div class='compareUser1'>50%</div> people before you have got it right.",
@@ -135,6 +135,7 @@ $(document).ready(function() {
     function calResult(){
         if (guessX == 201){
             resultVal = rightPct+"%";
+            result_share = "I'm among the top " + resultVal + " who got it right!";
         } else {
             var diffGuess = Math.abs(guessX - 201);
             var worseUser = 0;
@@ -144,7 +145,9 @@ $(document).ready(function() {
             var worsePct = Math.round(worseUser/playerNum * 100);
             var betterPct = 100-worsePct;
             resultVal = worsePct+"%";
+            result_share = "I did better than " + resultVal + " of other people, what about you?";
         }
+        console.log(result_share);
     }
 
 
@@ -518,7 +521,12 @@ $(document).ready(function() {
             chart4.get("seriesSubsidy").points[5].update({y:150});
             chart4.get("seriesSubsidy").points[6].update({y:150,dataLabels: labelstyle});
         } else {
-
+            chart4.get("seriesSubsidy").points[1].update({dataLabels: labelstyle});              
+            chart4.get("seriesSubsidy").points[2].update({y:0});
+            chart4.get("seriesSubsidy").points[3].update({y:0});
+            chart4.get("seriesSubsidy").points[4].update({y:0,dataLabels: {enabled: false}});
+            chart4.get("seriesSubsidy").points[5].update({y:0});
+            chart4.get("seriesSubsidy").points[6].update({y:0,dataLabels: {enabled: false}});
         }
     }, {
         offset: "80%"
@@ -536,7 +544,15 @@ $(document).ready(function() {
             chart4.get("seriesSubsidy").points[12].update({y:200});
             chart4.get("seriesSubsidy").points[13].update({y:200,dataLabels: labelstyle});
         } else {
-
+            chart4.get("seriesSubsidy").points[4].update({y:200,dataLabels: labelstyle});
+            chart4.get("seriesSubsidy").points[6].update({y:150,dataLabels: labelstyle});
+            chart4.get("seriesSubsidy").points[7].update({y:0});
+            chart4.get("seriesSubsidy").points[8].update({y:0});
+            chart4.get("seriesSubsidy").points[9].update({y:0});
+            chart4.get("seriesSubsidy").points[10].update({y:0});
+            chart4.get("seriesSubsidy").points[11].update({y:0});
+            chart4.get("seriesSubsidy").points[12].update({y:0});
+            chart4.get("seriesSubsidy").points[13].update({y:0,dataLabels: {enabled: false}});
         }
     }, {
         offset: "80%"
@@ -550,7 +566,11 @@ $(document).ready(function() {
             chart4.get("seriesSubsidy").points[16].update({y:150});
             chart4.get("seriesSubsidy").points[17].update({y:110,dataLabels: labelstyle});
         } else {
-
+            chart4.get("seriesSubsidy").points[13].update({y:200,dataLabels: labelstyle});
+            chart4.get("seriesSubsidy").points[14].update({y:0});
+            chart4.get("seriesSubsidy").points[15].update({y:0});
+            chart4.get("seriesSubsidy").points[16].update({y:0});
+            chart4.get("seriesSubsidy").points[17].update({y:0,dataLabels: {enabled: false}});
         }
     }, {
         offset: "80%"
@@ -663,9 +683,7 @@ $(document).ready(function() {
             credits: {enabled: false},
             legend: {enabled: false},
             tooltip: {
-                headerFormat: '{point.key}<br>',
-                pointFormat: '<b>{point.y} litres</b>',
-                backgroundColor: '#fff',
+                enabled: false,
             },
             plotOptions: {
                 series:{
@@ -845,9 +863,7 @@ $(document).ready(function() {
             credits: {enabled: false},
             legend: {enabled: false},
             tooltip: {
-                headerFormat: '{point.key}<br>',
-                pointFormat: '<b>{point.y}</b>',
-                backgroundColor: '#fff',
+                enabled: false,
             },
             plotOptions: {
                 series:{
@@ -922,6 +938,21 @@ $(document).ready(function() {
             });
         }    
     }    
+
+    function shareFB() {
+        FB.ui({
+          method: 'share',
+          href: 'https://interactive.pri.org/2017/fair-fashion-quiz/shareResult.php?result_share=' + encodeURIComponent(result_share), 
+          }, function(response){});
+    }
+        
+    function shareTW() {
+        var tweet_url = 'https://twitter.com/intent/tweet?related=pritheworld&text=';
+        tweet_url += encodeURIComponent(tweet_rating);
+        tweet_url += '&url=http://bit.ly/2ihF1Z9&via=pri&hashtags=flipyourlabel';
+        tweet_url += ' pic.twitter.com/ykChdQTScA';
+        window.open(tweet_url,'_blank');
+    }
 
     function sendGuess() {
         $.ajax({
