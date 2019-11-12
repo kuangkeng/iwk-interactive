@@ -153,7 +153,7 @@ $(document).ready(function() {
 
     if (width<500){
         //show only mobile video
-        $("#video-desktop").hide();
+        $("#video-video").hide();
 
         //For chart1a mobile
         $('#chart-container-1a').on("touchmove", function(e) {       
