@@ -62,9 +62,9 @@
             #chart-1-text-1 p{margin-top: 0px;}
             .chart-1-answer{background-color: #00C853; padding:15px 35px; color:white; display: inline-block; border-radius:5px;margin:30px;}
 
-            .section-2-header{margin-top:-800px;}
-            .section-cost-header{margin-top:-1050px;}
-            .section-cost-header .scroll-text{margin-bottom:800px !important;}
+            .section-2-header{margin-top:-500px; }
+            .section-cost-header{margin-top:-750px;}
+            .section-cost-header .scroll-text{margin-bottom:650px !important;}
             #section-cost > .uk-height-viewport{min-height:105vh !important;}
             #section-cost > .uk-height-viewport > .uk-height-viewport{min-height:105vh !important;}
             #section-subsidy > .uk-height-viewport {min-height:110vh !important;}
@@ -85,6 +85,7 @@
             video {max-width: 100%;height: auto;}
             .feedback-form{background-color:white; padding:40px; border-radius:8px;}
             .logo-box{position:absolute;top:160px;left:50%;width:40px;height:40px;margin-left: -20px;z-index: 9999;padding:5px;border-radius: 5px; background-color: rgba(73, 147, 216, 1);}
+            .uk-overlay-primary{background-color:rgba(4,58,102,0.8) ;}
 
             .compareUser1 {
                 display: inline-block;
@@ -112,10 +113,13 @@
                 #chart-3-text-1 {margin-top:-1720px !important;}
                 .feedback-form{padding:10px;}
                 .user-form-text {font-size:15px;}
+                #chart-1-text-1{margin-top: -1150px !important;}
 			}
             @media screen and (min-device-aspect-ratio: 16/8){
-                .section-2-header{margin-top:-600px;}
+                .section-2-header{margin-top:-500px;}
                 .section-cost-header{margin-top:-830px;}
+                #section-national > .uk-height-viewport{min-height:130vh !important;}
+                #section-national > .uk-height-viewport > .uk-height-viewport{min-height:130vh !important;}
                 #section-cost > .uk-height-viewport{min-height:130vh !important;}
                 #section-cost > .uk-height-viewport > .uk-height-viewport{min-height:130vh !important;}
                 #section-subsidy > .uk-height-viewport {min-height:120vh !important;}
@@ -123,6 +127,20 @@
                 #section-hike > .uk-height-viewport > .uk-height-viewport{min-height:120vh !important;}
                 #section-hike > .uk-height-viewport > .uk-height-viewport{min-height:120vh !important;}
             }
+
+            @media screen and (min-device-aspect-ratio: 32/15){
+                .section-2-header{margin-top:-500px;}
+                .section-cost-header{margin-top:-650px;}
+                #section-national > .uk-height-viewport{min-height:130vh !important;}
+                #section-national > .uk-height-viewport > .uk-height-viewport{min-height:130vh !important;}
+                #section-cost > .uk-height-viewport{min-height:130vh !important;}
+                #section-cost > .uk-height-viewport > .uk-height-viewport{min-height:130vh !important;}
+                #section-subsidy > .uk-height-viewport {min-height:120vh !important;}
+                #section-subsidy > .uk-height-viewport > .uk-height-viewport{min-height:120vh !important;}
+                #section-hike > .uk-height-viewport > .uk-height-viewport{min-height:120vh !important;}
+                #section-hike > .uk-height-viewport > .uk-height-viewport{min-height:120vh !important;}
+            }
+
 			@media screen and (min-width:501px){
 				.scroll-text{margin-bottom:650px !important;font-size:24px}
 			}
@@ -251,7 +269,7 @@
     <div class="uk-container uk-container-xsmall section-2-header" >
         <ul class="uk-list">
             <li class="scroll-text">
-                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700;line-height:0.7em; color: #033A66; font-size:100px;"><span style="font-size:50px; color: #00C853;">Water use within</span><br> Malaysia</h2>
+                <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center uk-overlay-primary " style=" padding-bottom:40px; border-radius:5px; font-weight:700;line-height:0.7em; color: white; font-size:100px;"><span style="font-size:50px; color: #00C853;">Water use within</span><br> Malaysia</h2>
             </li>
             <div class="chart-wrapper-2 uk-container uk-container-small" uk-sticky="offset: 50; bottom: #section-national">
                 <div id="state-menu-container" class="uk-container uk-margin-medium-bottom" style="opacity:0; text-align: center;">
@@ -357,7 +375,7 @@
     </div>
     <div class="uk-container uk-container-xsmall section-cost-header">
         <li class="scroll-text">
-            <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center" style="font-weight:700; line-height:0.7em; color: #033A66; font-size:90px;"><span style="font-size:35px;">How much does wastewater</span><br>cost us?</h2>
+            <h2 class="uk-heading-primary uk-text-uppercase uk-margin-remove uk-text-center uk-overlay-primary" style="font-weight:700; line-height:0.7em; padding-bottom: 40px; color:white; font-size:90px; border-radius:5px;"><span style="font-size:35px;">How much does wastewater</span><br>cost us?</h2>
         </li>
         <ul class="uk-list">
             <div class="chart-wrapper-3 uk-text-center uk-container" uk-sticky="offset: 100; bottom: #section-cost">
